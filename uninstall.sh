@@ -25,7 +25,10 @@ while getopts ":ht" opt; do
       ;;
     t)
       # Remove the TRANSMISSIONS folder
-      rm -r /home/$username/Documents/TRANSMISSIONS
+      rm /usr/local/bin/transmitter.bin
+      rm /etc/number_of_transmissions.txt      
+      rm -r /home/$username/Documents/TRANSMISSIONS	
+      exit 0
       ;;
     ?)
       echo "Invalid option: -${OPTARG}."
@@ -38,7 +41,7 @@ if [ $OPTIND -eq 1 ]; then
   # removes files, DUH
   rm /usr/local/bin/transmitter.bin
   rm /etc/number_of_transmissions.txt
-  echo "I can't say I approve, but uninstallation was completed."
+  echo "Nyoo~! >W< Whyy~?!"
 else
   echo "No files were removed. Use -h for help."
 fi
