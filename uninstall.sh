@@ -8,27 +8,37 @@ fi
 
 # Get the current username
 username=$(logname)
-echo $username
-# removes files, DUH
-rm /usr/local/bin/transmitter.bin
-rm /etc/number_of_transmissions.txt
 
+# Function to display help
+display_help() {
+  echo "uninstall.sh [OPTION]"
+  echo "deletes transmitter.bin and number_of_transmissions.txt"
+  echo "-h: displays this."
+  echo "-t: deletes the TRANSMISSIONS folder."
+}
+# Parse options
 while getopts ":ht" opt; do
-case ${opt} in
- h)
-   echo "uninstall.sh [OPTION]"
-   echo "deletes transmitter.bin and number_of_transmissions.txt"
-   echo "-h: displays this."
-   echo "-t: deletes the TRANSMISSIONS folder."
-   ;;
- t)
-   rm -r /home/$username/Documents/TRANSMISSIONS
-   ;;
- ?)
-   echo "Invalid option: -${OPTARG}."
-   exit 1
-   ;;
-esac
+  case ${opt} in
+    h)
+      display_help
+      exit 0
+      ;;
+    t)
+      # Remove the TRANSMISSIONS folder
+      rm -r /home/$username/Documents/TRANSMISSIONS
+      ;;
+    ?)
+      echo "Invalid option: -${OPTARG}."
+      exit 1
+      ;;
+  esac
 done
-
-echo "I can't say I aproove, but unistallation was completed."
+# Remove files only if no options are provided
+if [ $OPTIND -eq 1 ]; then
+  # removes files, DUH
+  rm /usr/local/bin/transmitter.bin
+  rm /etc/number_of_transmissions.txt
+  echo "I can't say I approve, but uninstallation was completed."
+else
+  echo "No files were removed. Use -h for help."
+fi
