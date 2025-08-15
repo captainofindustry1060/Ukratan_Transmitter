@@ -6,11 +6,33 @@ if [ "$EUID" -ne 0 ]; then
   exit
 fi
 
-# move files to the appropriate locations
-mv transmitter.bin /usr/local/bin/
-mv number_of_transmissions.txt /etc/
+if [ -e /usr/local/bin/transmitter.bin ]
+then
+	ehco "transmitter is deployed"
+else
+	if [ -e ./transmitter.bin ]
+	then
+		mv transmitter.bin /usr/local/bin/
+	else
+		curl -O https://raw.githubusercontent.com/captainofindustry1060/Ukratan_Transmitter/refs/heads/main/transmitter.bin
+		mv transmitter.bin /usr/local/bin/
+	fi
+fi
+
+if [ -e /etc/number_of_transmissions.txt ]
+then
+	echo "log is deployed"
+else
+	if [ -e ./number_of_transmissions.txt ]
+	then
+		mv number_of_transmissions.txt /etc/
+	else
+		curl -O https://raw.githubusercontent.com/captainofindustry1060/Ukratan_Transmitter/refs/heads/main/number_of_transmissions.txt
+		mv number_of_transmissions.txt /etc
+	fi
+fi
 
 # Set executable permissions
 chmod +x /usr/local/bin/transmitter.bin
 
-echo "Installation complete!"
+echo "Nyaa~ Installation complete!"
