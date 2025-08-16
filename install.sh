@@ -32,6 +32,18 @@ else
 	fi
 fi
 
+if [ -e /tmp/message.txt ]
+then
+	echo "message is deployed"
+else
+ 	if [ -e ./message.txt ]
+ 	then
+   		mv message.txt /tmp/
+	else
+  		curl -O https://raw.githubusercontent.com/captainofindustry1060/Ukratan_Transmitter/refs/heads/main/message.txt
+		mv message.txt /tmp/
+  	fi
+fi
 # Set executable permissions
 chmod +x /usr/local/bin/transmitter.bin
 
