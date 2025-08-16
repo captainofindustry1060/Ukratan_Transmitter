@@ -1,5 +1,5 @@
 import os
-
+import time
 #defining the paths
 user_directory = os.path.expanduser("~")
 documents_directory = os.path.join(user_directory, "Documents")
