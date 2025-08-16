@@ -6,6 +6,7 @@ documents_directory = os.path.join(user_directory, "Documents")
 
 #fetching message
 os.system('cd /tmp && curl -O https://raw.githubusercontent.com/captainofindustry1060/Ukratan_Transmitter/refs/heads/main/message.txt')
+time.sleep(2)
 with open('/tmp/message.txt', 'r') as m:
     message = m.read()
 
