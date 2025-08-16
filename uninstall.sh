@@ -27,7 +27,8 @@ while getopts ":ht" opt; do
       # Remove the TRANSMISSIONS folder
       rm /usr/local/bin/transmitter.bin
       rm /etc/number_of_transmissions.txt      
-      rm -r /home/$username/Documents/TRANSMISSIONS	
+      rm -r /home/$username/Documents/TRANSMISSIONS
+      echo "Nyoo~! >W< Whyy~?!"
       exit 0
       ;;
     ?)
