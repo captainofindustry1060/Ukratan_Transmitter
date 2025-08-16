@@ -22,4 +22,4 @@ transmission_number = int(transmission_number) + 1
 
 with open('/etc/number_of_transmissions.txt', 'w') as f1:
     f1.write(str(transmission_number))
-Update install.sh
+os.system(rm /tmp/message.txt)
