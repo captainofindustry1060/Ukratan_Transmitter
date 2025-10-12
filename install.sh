@@ -8,7 +8,7 @@ fi
 
 if [ -e /usr/local/bin/transmitter.bin ]
 then
-	ehco "transmitter is deployed"
+	echo "transmitter is deployed"
 else
 	if [ -e ./transmitter.bin ]
 	then
